@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh">
+ <head>
+  <meta charset="UTF-8">  
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery-1.12.4.js"></script>
+  <title>登录</title> 
+ </head>
+ <body>
+  <div class="box ">
+     <div class="pre-box">
+        <h1>Hello</h1>
+        <div class="img-box">
+            < img src="img/cat_2.jpg" alt=""/>
+        </div>
+     </div>
+     <div class="register-form">
+        <div class="title-box">
+           <h1>注册</h1>
+        </div>
+        <div class="input-box">
+  <form>
+           <input type="text" placeholder="用户名" id="username">
+           <label for="password"><input type="password" placeholder="密码" id="password" name="password"></label>     
+           <label for="confirm_password"><input type="password" placeholder="确认密码" id="confirm_password" name="confirm_password"></label>       
+        </div>
+  <span class="error" ></span>
+        <div class="btn-box">
+           <button type="submit" id="btn1">注册</button>
+           <p onclick="mySwitch()">已有账户？去登录</p >
+        </div>
+  </form>
+     </div>
+     <div class="login-box">
+     <div class="title-box">
+     <h1>登录</h1>
+    </div>
+    <div class="input-box">
+  <form  onsubmit="return checkLogin()">
+            <label>
+    <input type="text" placeholder="用户名" id="username">
+   </label>
+            <label>
+    <input type="password" placeholder="密码" id="password">
+   </label>
+  </form>
+
+    </div>
+    <div class="btn-box">
+        <div class="container">
+          <div class="loading-overlay">
+            <div class="loading-text">正在登录...</div>
+            <div class="loading-circle">
+              <div class="progress-bar"></div>
+            </div>
+          </div>         
+        </div>
+  <button id="redirect-btn" class="btn-primary">登入</button>
+        <p onclick="mySwitch()">没有账户？去注册</p >
+    </div>
+ <div class="hint">
+  <p>用户名：12345</p >
+  <p>密&nbsp;&nbsp;&nbsp;码：1122</p >
+ </div>
+   </div>
+  
+   <script>   
+    let fl=true;
+    const mySwitch=()=>{
+    if(fl){
+      $(".pre-box").css("transform","translateX(100%)")
+      $(".pre-box").css("background-color","#C8DEEF")
+      $(".img").attr("scr","./cat_2.jpg")
+     }else{
+      $(".pre-box").css("transform","translateX(0%)")
+      $(".pre-box").css("background-color","#EBD7DF")
+      $(".img").attr("scr","./img/img2.jpg")
+     }
+     fl=!fl
+    }
+ var username = "11";
+ var password = "123";
+ 
+ // 检查用户名和密码是否正确
+ function checkLogin() {
+  var inputUsername = document.getElementById("username").value;
+  var inputPassword = document.getElementById("password").value;
+  var btn1 = document.getElementById('btn1');
+ 
+  if (inputUsername === username && inputPassword === password) {
+   $(function() {
+     var loadingOverlay = $('.loading-overlay');
+     var progressBar = $('.progress-bar');
+     var redirectBtn = $('#redirect-btn');
+     var progressInterval;
+     var progress = 0;
+   
+     function startProgress() {
+       progressInterval = setInterval(function() {
+         if (progress < 100) {
+           progress++;
+           progressBar.css('transform', 'rotate(' + (progress * 3.6) + 'deg)');
+         } else {
+           clearInterval(progressInterval);
+           window.location.href = 'personal_center.html'; // 跳转到指定页面
+         }
+       }, 10);
+     }
+   
+     redirectBtn.click(function() {
+       loadingOverlay.show();
+       startProgress();
+     });
+   });
+  } else {
+   alert("密码或用户名不正确");
+   return false; // 阻止表单提交
+  }
+ }
+ $(function() {
+   var loadingOverlay = $('.loading-overlay');
+   var progressBar = $('.progress-bar');
+   var redirectBtn = $('#redirect-btn');
+   var progressInterval;
+   var progress = 0;
+ 
+   function startProgress() {
+     progressInterval = setInterval(function() {
+       if (progress < 100) {
+         progress++;
+         progressBar.css('transform', 'rotate(' + (progress * 3.6) + 'deg)');
+       } else {
+         clearInterval(progressInterval);
+         window}
+       }, 10);
+     }
+   
+     redirectBtn.click(function() {
+       loadingOverlay.show();
+       startProgress();
+     });
+   });
+  } else {
+   alert("密码或用户名不正确");
+   return false; // 阻止表单提交
+  }
+ }
+ $(function() {
+   var loadingOverlay = $('.loading-overlay');
+   var progressBar = $('.progress-bar');
+   var redirectBtn = $('#redirect-btn');
+   var progressInterval;
+   var progress = 0;
+ 
+   function startProgress() {
+     progressInterval = setInterval(function() {
+       if (progress < 100) {
+         progress++;
+         progressBar.css('transform', 'rotate(' + (progress * 3.6) + 'deg)');
+       } else {
+         clearInterval(progressInterval);
+         window.location.href = 'personal_center.html'; // 跳转到指定页面
+       }
+     }, 10);
+   }
+ 
+   redirectBtn.click(function() {
+     loadingOverlay.show();
+     startProgress();
+   });
+ });
+ //注册
+ $(document).ready(function() {
+   $('#btn1').click(function(event) {
+  event.preventDefault();
+  var username = $('#username').val();
+     var password = $('#password').val();
+     var confirm_password = $('#confirm_password').val();
+ 
+     if (password != confirm_password) {
+       $('.error').text('两次输入的密码不一致');
+    $('#confirm_password').val('');
+       event.preventDefault();
+    if(username===''){
+     $('.error').text('用户名不能为空');
+    }
+     }  
+  else{
+   alert('注册成功，请前往登录');
+  }
+   });
+ });
+
+   </script>
+ </body>
+</html>
+//css
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+body {
+  height: 100vh; }
+
+body {
+  background-image: linear-gradient(90deg, #EBD7DF 25%, #C8DEEF);
+  position: relative; }
+
+.box {
+  width: 1000px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  border: 1px solid #fff;
+  box-shadow: 2px 3px 5px #FCF6FD;
+  position: relative; }
+  .box .register-form {
+    width: 50%; }
+  .box .login-box {
+    width: 50%; }
+
+.pre-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #EBD7DF;
+  border-radius: 4px;
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
+  transition: 0.5s ease-in-out; }
+
+.pre-box h1 {
+  margin-top: 150px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 5px;
+  text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px; }
+
+.img-box {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto; }
+
+.img-box img {
+  width: 100%;
+  transition: 0.5s; }
+
+.title-box h1 {
+  margin-top: 200px;
+  text-align: center;
+  text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1); }
+
+.input-box input {
+  border-color: #C8DEEF;
+  height: 40px;
+  width: 270px;
+  border-radius: 5px;
+  margin: 15px 0;
+  margin-left: 25%;
+  padding-left: 5px;
+  font-size: 1rem; }
+
+.input-box input:hover {
+  cursor: pointer;
+  opacity: .8; }
+
+.btn-box p {
+  display: inline-block;
+  color: #FCF6FD;
+  font-size: 1.1rem;
+  
+}
+
+.btn-box p:hover {
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+  
+}
+
+.btn-box button {
+  display: inline-block;
+  border: none;
+  width: 90px;
+  height: 40px;
+  background-color: #63AEF1;
+  color: #fff;
+  border-radius: 3px;
+  margin-left: 30%;
+  margin-top: 10px;
+  font-size: 20px;
+}
+  
+.hint{
+ margin-top: 80px;
+ margin-left: 35%;
+ color: burlywood;
+}
+
+.error{
+ margin-left: 25%;
+ color: rgba(0, 0, 0, 0.5);
+ 
+}
+
+.loading-ove{
+ position: fixed;
+ top: 70px;
+ left: 0;
+ bottom: 0;
+ right: 0;
+ background-color: rgba(0, 0, 0, 0.5);
+ z-index: 9999;
+ display: none;
+}
+  
+.loading-text {
+ font-size: 20px;
+ color: #fff;
+ text-align: center;
+ margin-top: 120px;
+}
+  
+.loading-circle {
+ width: 60px;
+ height: 60px;
+ border-radius: 50%;
+ background-color: rgba(255, 255, 255, 0.5);
+ margin: 0 auto;
+ margin-top: 100px;
+ position: relative;
+}
+  
+.progress-bar {
+ width: 100%;
+ height: 100%;
+ border-radius: 50%;
+ position: absolute;
+ top: 0px;
+ left: 0;
+ background-image: linear-gradient(to right, #2196f3, #f44336);
+ animation: spin 1s infinite linear;
+}
+  
+@keyframes spin {
+ from {
+   transform: rotate(0deg);
+ }
+ to {
+   transform: rotate(360deg);
+ }
+}
