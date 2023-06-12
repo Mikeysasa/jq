@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh">
+ <head>
+  <meta charset="UTF-8">  
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery-1.12.4.js"></script>
+  <title>登录</title> 
+ </head>
+ <body>
+  <div class="box ">
+     <div class="pre-box">
+        <h1>Hello</h1>
+        <div class="img-box">
+            < img src="img/cat_2.jpg" alt=""/>
+        </div>
+     </div>
+     <div class="register-form">
+        <div class="title-box">
+           <h1>注册</h1>
+        </div>
+        <div class="input-box">
+  <form>
+           <input type="text" placeholder="用户名" id="username">
+           <label for="password"><input type="password" placeholder="密码" id="password" name="password"></label>     
+           <label for="confirm_password"><input type="password" placeholder="确认密码" id="confirm_password" name="confirm_password"></label>       
+        </div>
+  <span class="error" ></span>
+        <div class="btn-box">
+           <button type="submit" id="btn1">注册</button>
+           <p onclick="mySwitch()">已有账户？去登录</p >
+        </div>
+  </form>
+     </div>
+     <div class="login-box">
+     <div class="title-box">
+     <h1>登录</h1>
+    </div>
+    <div class="input-box">
+  <form  onsubmit="return checkLogin()">
+            <label>
+    <input type="text" placeholder="用户名" id="username">
+   </label>
+            <label>
+    <input type="password" placeholder="密码" id="password">
+   </label>
+  </form>
+
+    </div>
+    <div class="btn-box">
+        <div class="container">
+          <div class="loading-overlay">
+            <div class="loading-text">正在登录...</div>
+            <div class="loading-circle">
+              <div class="progress-bar"></div>
+            </div>
+          </div>         
+        </div>
+  <button id="redirect-btn" class="btn-primary">登入</button>
+        <p onclick="mySwitch()">没有账户？去注册</p >
+    </div>
+ <div class="hint">
+  <p>用户名：12345</p >
+  <p>密&nbsp;&nbsp;&nbsp;码：1122</p >
+ </div>
+   </div>
+  
+   <script>   
+    let fl=true;
+    const mySwitch=()=>{motisi:
+<script>   
+    let fl=true;
+    const mySwitch=()=>{
+     if(fl){
+      $(".pre-box").css("transform","translateX(100%)")
+      $(".pre-box").css("background-color","#C8DEEF")
+      $(".img").attr("scr","./cat_2.jpg")
+     }else{
+      $(".pre-box").css("transform","translateX(0%)")
+      $(".pre-box").css("background-color","#EBD7DF")
+      $(".img").attr("scr","./img/img2.jpg")
+     }
+     fl=!fl
+    }
+	var username = "11";
+	var password = "123";
+	
+	// 检查用户名和密码是否正确
+	function checkLogin() {
+		var inputUsername = document.getElementById("username").value;
+		var inputPassword = document.getElementById("password").value;
+		var btn1 = document.getElementById('btn1');
+	
+		if (inputUsername === username && inputPassword === password) {
+			$(function() {
+			  var loadingOverlay = $('.loading-overlay');
+			  var progressBar = $('.progress-bar');
+			  var redirectBtn = $('#redirect-btn');
+			  var progressInterval;
+			  var progress = 0;
+			
+			  function startProgress() {
+			    progressInterval = setInterval(function() {
+			      if (progress < 100) {
+			        progress++;
+			        progressBar.css('transform', 'rotate(' + (progress * 3.6) + 'deg)');
+			      } else {
+			        clearInterval(progressInterval);
+			        window.location.href = 'personal_center.html'; // 跳转到指定页面
+			      }
+			    }, 10);
+			  }
+			
+			  redirectBtn.click(function() {
+			    loadingOverlay.show();
+			    startProgress();
+			  });
+			});
+		} else {
+			alert("密码或用户名不正确");
+			return false; // 阻止表单提交
+		}
+	}
+	$(function() {
+	  var loadingOverlay = $('.loading-overlay');
+	  var progressBar = $('.progress-bar');
+	  var redirectBtn = $('#redirect-btn');
+	  var progressInterval;
+	  var progress = 0;
+	
+	  function startProgress() {
+	    progressInterval = setInterval(function() {
+	      if (progress < 100) {
+	        progress++;
+	        progressBar.css('transform', 'rotate(' + (progress * 3.6) + 'deg)');
+	      } else {
+	        clearInterval(progressInterval);
+	        window}
+			    }, 10);
+			  }
+			
+			  redirectBtn.click(function() {
+			    loadingOverlay.show();
+			    startProgress();
+			  });
+			});
+		} else {
+			alert("密码或用户名不正确");
+			return false; // 阻止表单提交
+		}
+	}
+	$(function() {
+	  var loadingOverlay = $('.loading-overlay');
+	  var progressBar = $('.progress-bar');
+	  var redirectBtn = $('#redirect-btn');
+	  var progressInterval;
+	  var progress = 0;
+	
+	  function startProgress() {
+	    progressInterval = setInterval(function() {
+	      if (progress < 100) {
+	        progress++;
+	        progressBar.css('transform', 'rotate(' + (progress * 3.6) + 'deg)');
+	      } else {
+	        clearInterval(progressInterval);
+	        window.location.href = 'personal_center.html'; // 跳转到指定页面
+	      }
+	    }, 10);
+	  }
+	
+	  redirectBtn.click(function() {
+	    loadingOverlay.show();
+	    startProgress();
+	  });
+	});
+	//注册
+	$(document).ready(function() {
+	  $('#btn1').click(function(event) {
+		event.preventDefault();
+		var username = $('#username').val();
+	    var password = $('#password').val();
+	    var confirm_password = $('#confirm_password').val();
+	
+	    if (password != confirm_password) {
+	      $('.error').text('两次输入的密码不一致');
+		  $('#confirm_password').val('');
+	      event.preventDefault();
+		  if(username===''){
+		  	$('.error').text('用户名不能为空');
+		  }
+	    }		
+		else{
+			alert('注册成功，请前往登录');
+		}
+	  });
+	});
+
+   </script>
+ </body>
+</html>       /*登录页面的html*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+body {
+  height: 100vh; }
+
+body {
+  background-image: linear-gradient(90deg, #EBD7DF 25%, #C8DEEF);
+  position: relative; }
+
+.box {
+  width: 1000px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  border: 1px solid #fff;
+  box-shadow: 2px 3px 5px #FCF6FD;
+  position: relative; }
+  .box .register-form {
+    width: 50%; }
+  .box .login-box {
+    width: 50%; }
+
+.pre-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #EBD7DF;
+  border-radius: 4px;
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
+  transition: 0.5s ease-in-out; }
+
+.pre-box h1 {
+  margin-top: 150px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 5px;
+  text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px; }
+
+.img-box {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto; }
+
+.img-box img {
+  width: 100%;
+  transition: 0.5s; }
+
+.title-box h1 {
+  margin-top: 200px;
+  text-align: center;
+  text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1); }
+
+.input-box input {
+  border-color: #C8DEEF;
+  height: 40px;
+  width: 270px;
+  border-radius: 5px;
+  margin: 15px 0;
+  margin-left: 25%;
+  padding-left: 5px;
+  font-size: 1rem; }
+
+.input-box input:hover {
+  cursor: pointer;
+  opacity: .8; }
+
+.btn-box p {
+  display: inline-block;
+  color: #FCF6FD;
+  font-size: 1.1rem;
+  
+}
+
+.btn-box p:hover {
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+  
+}
+
+.btn-box button {
+  display: inline-block;
+  border: none;
+  width: 90px;
+  height: 40px;
+  background-color: #63AEF1;
+  color: #fff;
+  border-radius: 3px;
+  margin-left: 30%;
+  margin-top: 10px;
+  font-size: 20px;
+}
+  
+.hint{
+ margin-top: 80px;
+ margin-left: 35%;
+ color: burlywood;
+}
+
+.error{
+ margin-left: 25%;
+ color: rgba(0, 0, 0, 0.5);
+ 
+}
+
+.loading-overlay {
+ position: fixed;
+ top: 70px;
+ left: 0;
+ bottom: 0;
+ right: 0;
+ background-color: rgba(0, 0, 0, 0.5);
+ z-index: 9999;
+ display: none;
+}
+  
+.loading-text {
+ font-size: 20px;
+ color: #fff;
+ text-align: center;
+ margin-top: 120px;
+}
+  
+.loading-circle {
+ width: 60px;
+ height: 60px;
+ border-radius: 50%;
+ background-color: rgba(255, 255, 255, 0.5);
+ margin: 0 auto;
+ margin-top: 100px;
+ position: relative;
+}
+  
+.progress-bar {
+ width: 100%;
+ height: 100%;
+ border-radius: 50%;
+ position: absolute;
+ top: 0px;
+ left: 0;
+ background-image: linear-gradient(to right, #2196f3, #f44336);
+ animation: spin 1s infinite linear;
+}
+  
+@keyframes spin {
+ from {
+   transform: rotate(0deg);
+ }
+ to {
+   transform: rotate(360deg);
+ }
+}      /*登录界面的css*/
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人中心</title>
+	<link rel="stylesheet" href="css/personal.css">
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			// 模拟加载进度条
+			var progressBar = $('.progress-bar');
+			progressBar.animate({width: '100%'}, 1500);
+
+			// 点击tab切换内容
+			$('.tab-item').click(function(){
+				var tabId = $(this).attr('data-tab');
+				$('.tab-item').removeClass('active');
+				$(this).addClass('active');
+				$('.tab-content').removeClass('active');
+				$('#'+tabId).addClass('active');
+			});
+
+			// 滚动到顶部按钮
+			$(window).scroll(function(){
+				if ($(this).scrollTop() > 200) {
+					$('.btn-top').fadeIn();
+				} else {
+					$('.btn-top').fadeOut();
+				}
+			});
+			$('.btn-top').click(function(){
+				$('html, body').animate({scrollTop : 0},800);
+				return false;
+			});
+		});		
+		
+		
+		// 搜索好友
+		const friends = ['吉格斯', '嘉文', '卡莎', '伊芙琳', '露露', '卡特琳娜', '佛耶戈', '辛德拉'];
+		const friendList = document.getElementById('friend-list');
+		const searchInput = document.getElementById('search-input');
+		
+		function searchFriends(keyword) {
+		  friendList.innerHTML = '';
+		  friends.filter(friend => friend.includes(keyword)).forEach(friend => {
+		    const li = document.createElement('li');
+		    li.textContent = friend;
+		    friendList.appendChild(li);
+		  });
+		}
+		searchInput.addEventListener('input', () => {
+		  const keyword = searchInput.value.trim();
+		  if (keyword) {
+		    searchFriends(keyword);
+		  } else {
+		    showFriends();
+		  }
+		});
+			
+	</script>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h1>个人中心</h1>
+			<nav>
+				<ul>
+					<li>首页</li>
+					<li>我的动态</li>
+					<li>相册</li>
+					<li>好友</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<section class="banner">
+		<div class="container">
+			<div class="avatar"></div>
+			<h2>莫提斯</h2>
+			<p>一名前端工程师</p >
+		</div>
+	</section>
+
+	<section class="content">
+		<div class="container">
+			<div class="progress">
+				<div class="progress-bar"></div>
+			</div>
+
+			<div class="tabs">
+				<div class="tab-item active" data-tab="tab1">个人资料</div>
+				<div class="tab-item" data-tab="tab2">我的日志</div>
+				<div class="tab-item" data-tab="tab3">我的相册</div>
+				<div class="tab-item" data-tab="tab4">我的好友</div>
+			</div>
+
+			<div id="tab1" class="tab-content active">
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;我是一名热爱前端开发的工程师，有着丰富的前端开发经验。
+				我喜欢尝试新技术和挑战自己的能力，在工作中始终保持着对代
+				码质量和用户体验的追求。我具备良好的团队合作精神，能够与设计师、
+				后端开发人员和产品经理紧密协作，为团队的成功做出贡献。</p >			
+			</div>
+
+			<div id="tab2" class="tab-content">
+				<p>日期：2021年11月12日</p >
+				<p>时间：14:00-16:00</p >
+				<p>事件：前端页面出现加载缓慢问题</p >
+				查看详细
+				<div id="myModal" class="modal">
+				  <div class="modal-content">
+				    <span class="close">&times;</span>
+					<div class="work_text">
+				    <p>日期：2021年11月12日</p >
+					<p>时间：14:00-16:00</p >
+					<p>事件：前端页面出现加载缓慢问题</p >
+					<p>记录：今天我接到了用户反馈，称他们在使用我们的Web应用程序时遇到了加载缓慢的问题。
+					为了解决这个问题，我打开了Chrome浏览器的控制台，
+					并在<strong style="color: red;">JavaScript</strong>代码中加入了一些
+					<strong style="color: red;">console.log()</strong>语句来输出一些性能相关的信息。</p >
+					<p>为了优化性能，我采取了以下措施：</p >
+					<p><strong>优化图片的大小和格式，以减小文件大小和提高加载速度。</strong></p >
+					<p><strong>使用缓存机制来缓存已加载的数据和资源，以便更快地访问。</strong></p >
+					<p><strong>对代码进行优化和重构，减少不必要的计算和循环。</strong></p >
+					</div>
+				  </div>
+				</div>
+			</div>
+
+			<div id="tab3" class="tab-content">
+				<p><strong style="font-size: 30px;">ฅ小猫图集ฅ</strong></p >				
+				< img src="img/cat_7.jpg" width="18%" height="18%" />
+				< img src="img/cat_3.jpg" width="18%" height="18%"/>
+				< img src="img/cat_5.jpg" width="18%" height="18%"/>
+				< img src="img/cat_6.jpg" width="18%" height="18%"/>
+				< img src="img/cat_8.jpg" width="18%" height="18%"/>										
+			</div>			
+			<div id="tab4" class="tab-content">
+				<div class="dropdown">		
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <div class="search-box">
+				      <input type="text" placeholder="搜索好友..." id="search-input">
+				    </div>
+				    <ul class="friend-list">
+				      <li>
+				        <a href=" ">
+				          < img src="img/p2.jpg" alt="好友头像">
+				          <span>吉格斯</span>
+				        </a >
+				      </li>
+				      <li>
+				        <a href="#">
+				          < img src="img/p3.jpg" alt="好友头像">
+				          <span>卡莎</span>
+				        </a >
+				      </li>
+				      <li>
+				        <a href="#">
+				          < img src="img/p1.jpg" alt="好友头像">
+				          <span>嘉文</span>
+				        </a >
+				      </li>
+				    </ul>
+				    <div class="more-friends">
+					  <div id="MyModal" class="Modal">
+					    <div class="Modal-content">
+					      <span class="Close">&times;</span>
+					      <ul class="friend-list">
+					        <li>
+					          <a href="#">
+					            < img src="img/p2.jpg" alt="好友头像">
+					            <span>吉格斯</span>
+					          </a >
+					        </li>
+					        <li>
+					          <a href="#">
+					            < img src="img/p3.jpg" alt="好友头像">
+					            <span>卡莎</span>
+					          </a >
+					        </li>
+					        <li>
+					          <a href="#">
+					            < img src="img/kunkun.jpg" alt="好友头像">
+					            <span>鸽鸽</span>
+					          </a >
+					        </li>
+							<li>
+							  <a href="#">
+							    < img src="img/timo.jpg" alt="好友头像">
+							    <span>小莫</span>
+							  </a >
+							</li>
+							<li>
+							  <a href="#">
+							    < img src="img/salefenni.png "alt="好友头像">
+							    <span>萨勒芬妮</span>
+							  </a >
+							</li>
+							<li>
+							  <a href="#">
+							    < img src="img/yi.jpg" alt="好友头像">
+							    <span>易</span>
+							  </a >
+							</li>
+							<li>
+							  <a href="#">
+							    < img src="./img/lulu.jpg" alt="好友头像">
+							    <span>露露</span>
+							  </a >
+							</li>
+					      </ul>					      
+					    </div>
+					  </div>
+				    </div>
+				  </div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="container">
+			<p>&copy; 2023 莫提斯</p >
+			返回顶部
+		</div>
+	</footer>
+</body>
+<script>
+    $(document).ready(function() {
+	// 点击链接时显示模态框
+	$("#myLink").click(function(e) {
+	e.preventDefault(); // 阻止默认行为（即打开链接）
+	$("#myModal").fadeIn(); // 显示模态框
+    });
+		
+    // 点击关闭按钮或模态框以外的区域时隐藏模态框
+	$(document).on("click", function(e) {
+	if ($(e.target).is(".close") || $(e.target).is("#myModal")) {
+		$("#myModal").fadeOut(); // 关闭模态框
+	    }
+	  });
+    });
+	
+	$(document).ready(function() {
+	// 点击链接时显示模态框
+	$("#MyLink").click(function(e) {
+	e.preventDefault(); // 阻止默认行为（即打开链接）
+	$("#MyModal").fadeIn(); // 显示模态框
+	});
+		
+	// 点击关闭按钮或模态框以外的区域时隐藏模态框
+	$(document).on("click", function(e) {
+	if ($(e.target).is(".Close") || $(e.target).is("#MyModal")) {
+		$("#MyModal").fadeOut(); // 关闭模态框
+	    }
+	  });
+	});		
+	</script>
+</html>               /*个人中心的html*/
+
+
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+body {
+ font-family: 'Helvetica Neue', sans-serif;
+ background-color: wheat;
+ color: #333;
+ height: 1120px;
+}
+
+.container {
+ max-width: 960px;
+ margin: 0 auto;
+ padding: 20px;
+ 
+}
+
+/* Header */
+header {
+ background-color: #ffaa7f;
+ color: #fff;
+}
+
+header h1 {
+ font-size: 30px; 
+ text-align: center;
+}
+
+nav ul {
+ list-style: none;
+ display: inline-block;
+}
+
+nav li {
+ float: left;
+ margin-left: 20px;
+}
+
+nav a {
+ color: #fff;
+ text-decoration: none;
+ padding: 10px;
+ border-radius: 5px;
+ transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+ background-color: hotpink;
+}
+
+nav a.active {
+ background-color: palegreen;
+}
+
+/* Banner */
+.banner {
+ background-image: url(../img/cat.jpg);
+ background-position: center center;
+ background-size: cover;
+ height: 400px;
+ position: relative;
+}
+
+.avatar {
+ background-image: url(../img/cat_2.jpg);
+ background-position: center center;
+ background-size: cover;
+ border-radius: 50%; 
+ width: 150px;
+ height: 150px;
+ position: absolute;
+ bottom: -100px;
+ left: 50%;
+ transform: translateX(-50%);
+}
+
+.banner h2 {
+ font-size: 36px;
+ margin-top: 40px;
+ color: #F5F5F5;
+}
+
+.banner p {
+ font-size: 18px;
+ margin-top: 20px;
+ color: #F5F5F5;
+}
+
+
+
+/* Content */
+.progress {
+ background-color: #ffff7f;
+ padding: 10px;
+ box-shadow: 0 0 5px rgba(0,0,0,0.3);
+ margin-bottom: 40px;
+}
+
+.progress-bar {
+ background-color: #3498db;
+ height: 10px;
+ width: 0;
+ transition: width 1.5s ease;
+}
+
+.tabs {
+ display: flex;
+ margin-bottom: 20px;
+}
+
+.tab-item {
+ flex: 1;
+ text-align: center;
+ padding: 20px;
+ background-color: #ff69b4;
+ color: #333;
+ cursor: pointer;
+ transition: background-color 0.3s ease;
+}
+
+.tab-item:hover,
+.tab-item.active {
+ background-color: #f5f5f5;
+ color: #3498db;
+}
+
+.tab-content {
+ background-color: #fff;
+ padding: 20px;
+ box-shadow: 0 0 5px rgba(0,0,0,0.3);
+ display: none;
+}
+
+.tab-content.active {
+ display: block;
+}
+
+#tab3{
+ float: left;
+}
+
+/* Footer */
+footer {
+ background-color: #ffaa7f;
+ color: #fff;
+ padding: 20px;
+ text-align: center;
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ right: 0;
+}
+
+footer p {
+ margin-bottom: 10px;
+}
+
+.btn-top {
+ display: inline-block;
+ background-color: palegreen;
+ color: #333;
+ padding: 10px 20px;
+ border-radius: 5px;
+ text-decoration: none;
+ transition: background-color 0.4s ease;
+}
+
+.btn-top:hover {
+ background-color: #f5f5f5;
+}
+
+.dropdown-menu {
+    width: 280px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .search-box {
+    margin-bottom: 10px;
+  }
+  
+  .search-box input {
+    width: 100%;
+    padding: 6px 12px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    font-size: 14px;
+  }
+  
+  .friend-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .friend-list li {
+    margin-bottom: 10px;
+  }
+  
+  .friend-list a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .friend-list img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+.modal {
+   display: none; /* 初始状态隐藏 */
+   position: fixed; /* 相对于视口定位 */
+   z-index: 1; /* 放在最顶层 */
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0,0,0,0.5); /* 半透明黑色背景 */
+ }
+ 
+ /* 模态框内容 */
+ .modal-content {
+   background-color: #fefefe;
+   margin: 10% auto; /* 居中显示 */
+   padding: 20px;
+   border: 1px solid #888;
+   width: 80%;
+   max-width: 600px;
+ }
+ 
+ /* 关闭按钮 */
+ .close {
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+ }
+ 
+ .close:hover,
+ .close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+ }
+.Modal {
+   display: none; /* 初始状态隐藏 */
+   position: fixed; /* 相对于视口定位 */
+   z-index: 1; /* 放在最顶层 */
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;   
+   background-color: rgba(0,0,0,0.5); /* 半透明黑色背景 */
+ }
+.Modal-content {
+   background-color: #fefefe;
+   margin: 10% auto; /* 居中显示 */
+   padding: 20px;
+   border: 1px solid #888;
+   width: 80%;
+   max-width: 600px;
+   margin-top: 10px;
+ }
+ 
+ /* 关闭按钮 */
+ .Close {
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+ }
+ 
+ .Close:hover,
+ .Close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+ }
+.work_text{
+ font-size: 16px;
+}          /*个人中心的css*/
+
